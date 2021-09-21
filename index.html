@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>SuperHero Hunter JS</title>
+</head>
+<!-- Body Starts here -->
+<body onload="myFunction()">
+    <!-- NavBar is here -->
+    <header>
+        <a id="logotext" href="index.html"><p ><strong id="initial">S</strong><span id="resttext">uper Hero Hunter</span></p></a>
+        <a id="Favourites" href="fav.html"><span >Favourites</span></a>
+    </header>
+    <!-- Search Bar Is Here -->
+    <input class="input-style" id="input" type="text" oninput="onchangee()">
+    <!-- Suggestions Will Be Displayed Over Here -->
+    <div id="suggestions">
+        
+    </div>
+    <!-- JavaScript file of the index html -->
+    <script>
+
+        function myFunction(){
+            if(document.getElementById("input").value==""){
+                document.getElementById("suggestions").style.visibility="hidden"
+            }
+        }
+    
+        function onchangee() {
+            // Invoking onchange function over here
+            if(document.getElementById("input").value==""){
+                document.getElementById("suggestions").style.visibility="hidden"
+            }
+            else{
+                // searching and updating according to the input value
+
+                document.getElementById("suggestions").style.visibility="visible"
+                const myNode = document.getElementById("suggestions");
+                myNode.innerHTML = '';
+
+                // Api calling over here
+
+                var request = new XMLHttpRequest();
+                request.open('GET', "https://www.superheroapi.com/api.php/3096301930603620/search/" + document.getElementById("input").value, true);
+                request.responseType = 'json'
+                request.onload = function () {
+                    console.log();
+                    var newCharacterJSON = this.response;
+                    for(var i=0;i<newCharacterJSON.results.length;i++){
+                        var a = document.createElement("a");
+                        a.href="superhero.html?id="+newCharacterJSON.results[i.toString()].id;
+                        var div = document.createElement("div");
+                        var img = document.createElement('img');
+
+                        img.src = newCharacterJSON.results[i.toString()].image.url;
+                        console.log(newCharacterJSON.results);
+                        var node = document.createElement("LI");                 
+                        var textnode = document.createTextNode(newCharacterJSON.results[i.toString()].name);        
+                        node.appendChild(textnode); 
+                        div.appendChild(img); 
+                        div.appendChild(node);  
+                        a.appendChild(div);                          
+                        document.getElementById("suggestions").appendChild(a); 
+                
+                    }
+                    
+                    
+                }
+                request.send();
+            }
+            
+        }
+        // end of javascript file
+    </script>
+
+    <!-- end of body tag -->
+</body>
+
+</html>

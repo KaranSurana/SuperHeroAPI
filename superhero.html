@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperHero</title>
+    <link rel="stylesheet" href="/assets/css/superhero.css">
+    <script src="https://kit.fontawesome.com/1f11bbce79.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- this page displays the stats of the selected superhero -->
+    <!-- beginning of body tag in html -->
+    <!-- navbar -->
+    <header>
+        <a id="logotext" href="index.html"><p><strong id="initial">S</strong><span id="resttext">uper Hero Hunter</span></p></a>
+        <a id="Favourites" href="fav.html"><span >Favourites</span></a>
+    </header>
+    <!-- image of the superhero -->
+    <img id="imagehero" src="" alt="SuperHero">
+    <!-- stats of the superhero -->
+    <!-- updating the stats using api calls in javascript files -->
+    <div id="stats">
+        <h1 id="name"></h1>
+        <span>Full Name: </span>
+        <p id="fullname"></p>
+
+        <span>Aliases: </span>
+        <p id="aliasesname"></p>
+
+        <span>Place-of-birth: </span>
+        <p id="placeofbirth"></p>
+
+        <span>Intelligence: </span>
+        <p id="intelligence"></p>
+
+        <span>Strength: </span>
+        <p id="strength"></p>
+
+        <span>Speed: </span>
+        <p id="speed"></p>   
+
+        <span>Power: </span>
+        <p id="power"></p>
+
+        <span>Durability: </span>
+        <p id="durability"></p>
+
+        <span>First-appearance: </span>
+        <p id="first-appearance"></p>
+        <span>Publisher: </span>
+        <p id="publisher"></p>
+        
+
+        
+        <span>Group-affiliation: </span>
+        <p id="group-affiliation"></p>
+        
+        <br>
+        <a id="atag"><i class="fas fa-plus"></i> Add To My Favourites</a>
+    </div>
+    <!-- end of body tag -->
+</body>
+<!-- javascript file linked -->
+<script type="module" src="/assets/js/superhero.js">
+</script>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourites</title>
+    <link rel="stylesheet" href="/assets/css/fav.css">
+</head>
+
+<body id="body">
+
+    <!-- Navbar -->
+    <header>
+        <a href="index.html">
+            <p id="logotext"><strong id="initial">S</strong><span id="resttext">uper Hero Hunter</span></p>
+        </a>
+        <a id="Favourites" href="fav.html"><span>Favourites</span></a>
+    </header>
+    <!-- Here all the favourite list will be displayed using javascript -->
+
+</body>
+<script type="module">
+    // javascript file
+
+
+    // getting all the ids saved by user as favourites using cookies
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    var arr=getCookie("favHero").split(',');
+    console.log(arr)
+    // accessing all the ids and using async await for api calls
+    const func = async function (arr) {
+        for (let i = 0; i < arr.length; i++) {
+            var request = new XMLHttpRequest();
+            request.open('GET', "https://www.superheroapi.com/api.php/3096301930603620/" + arr[i], true);
+            request.responseType = 'json'
+            request.onload = await function () {
+                var newCharacterJSON = this.response;
+                console.log(newCharacterJSON)
+
+                // creating divs according to the users favourites
+                var a = document.createElement("a");
+                var div = document.createElement("div");
+                var img = document.createElement("img");
+                var p = document.createElement("p");
+                p.innerText = newCharacterJSON.name;
+                img.src = newCharacterJSON.image.url;
+                div.appendChild(img);
+                div.appendChild(p);
+                a.appendChild(div);
+                a.href = "/superhero.html?id=" + arr[i];
+                document.getElementById("body").appendChild(a)
+                console.log(newCharacterJSON)
+            }
+            request.send();
+        }
+
+    }
+    func(arr);
+
+// end of javascript file
+</script>
+
+</html>
