@@ -7,12 +7,11 @@
     display: none;
 }
 body{
-    background-image: url("/assets/images/wallpaper.jpg");
+    background-image: url("wallpaper.jpg");
     background-size: cover;
     
     background-repeat: repeat-y;
 }
-
 /* navbar css */
 header{
     width: 100%;
@@ -28,12 +27,12 @@ header{
 
 #logotext{
     position: relative;
+    text-decoration: none;
     left: 3%;
     margin: 0;
     display: inline-block;  
     color: white;
     line-height: 10vh;
-    text-decoration: none;
 }
 
 #initial{
@@ -56,24 +55,51 @@ header{
     text-decoration: none;
 }
 
-div{
-    display: inline-block;
-    height: 262px;
-    width: 184px;
-    border: 2px solid white;
-    background-color: black;
-    margin: 15px;
+#input{
+    opacity: 0.8;
+    border-radius: 7px;
+    border: none;
+    width: 39vw;
+    height: 6.5vh;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    font-size: 3vh;
+}
+textarea:focus, input:focus{
+    outline: none;
 }
 
-img{
-    height: 240px;
-    width: 184px;
-
+#suggestions{
+    width:39vw;
+    height:36vh;
+    background-color:white;
+    opacity: 0.8;
+    overflow-y: scroll;
+    position: absolute;
+    top: 56.5%;
+    left: 30%;
+    list-style-type: none;
 }
 
-p{
-    font-family: Arial, Helvetica, sans-serif;
+#suggestions> a> div > img{
+   height: 40px;
+   width: 40px;
+   display: inline;
+}
+
+#suggestions>a{
+    text-decoration: none;
+    color: black;
+}
+#suggestions>a> div > li{
+    display: inline;
+    position: relative;
+    top: -15px;
+    left: 10px;
+ }
+.align-centre{
+    display: flex;
     align-items: center;
-   text-align: center;
-   color: white;
+    
 }

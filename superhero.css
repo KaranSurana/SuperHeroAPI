@@ -7,7 +7,7 @@
     display: none;
 }
 body{
-    background-image: url("/assets/images/bg.png");
+    background-image: url("bg.png");
     background-size: cover;
     
     background-repeat: repeat-y;
